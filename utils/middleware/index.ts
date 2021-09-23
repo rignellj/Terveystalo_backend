@@ -7,7 +7,7 @@ const unknownEndpoint: RequestHandler = (_req, res) => {
 const errorHandler: ErrorRequestHandler = (err, _req, res, next): void | Response => {
 	const { message } = err;
 
-	console.log('On errorHandler: ', message);
+	console.log('On error handler: ', message);
 	if (res.headersSent) {
 		return next(err);
 	}
@@ -19,4 +19,4 @@ const errorHandler: ErrorRequestHandler = (err, _req, res, next): void | Respons
 export default {
 	unknownEndpoint,
 	errorHandler
-}
+};

@@ -3,7 +3,7 @@ import cors from 'cors';
 
 import middleware from './utils/middleware';
 import sumRouter from './routes/sum';
-import checkprimeRouter from './routes/checkprime';
+import checkPrimeRouter from './routes/checkPrime';
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.use(cors({
 }));
 
 app.use('/api/sum', sumRouter);
-app.use('/api/checkprime', checkprimeRouter);
+app.use('/api/checkprime', checkPrimeRouter);
 
 app.use(middleware.unknownEndpoint);
 

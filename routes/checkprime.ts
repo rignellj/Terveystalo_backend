@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import checkprimeController from '../controllers/checkprime';
+import checkPrimeController from '../controllers/checkPrime';
 
 const router = Router();
 
-router.get('/', checkprimeController.checkprime);
+router.get('/', checkPrimeController.checkPrime);
 
 export default router;
