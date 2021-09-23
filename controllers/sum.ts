@@ -6,17 +6,17 @@ import HttpError from '../utils/httpError';
 import { validateNumbers } from '../utils/middleware/numberValidation';
 
 const sum = (req: Request, res: Response, next: NextFunction) => {
-	const { query: { numbers } } = req;
+	const { query: { numbers: numbersQuery } } = req;
 
 	try {
-		if (!numbers) {
-			throw new HttpError('Check your input', 400);
+		if (!numbersQuery) {
+			throw new HttpError('You didn\'t send any input.', 400);
 		}
-		const nums = numbers as string;
-		if (!validateNumbers(nums)) {
-			throw new HttpError('Check your input', 400);
+		const numbers = numbersQuery as string;
+		if (!validateNumbers(numbers)) {
+			throw new HttpError('Only digits 0-9 and "," are allowed.', 400);
 		}
-		const sum = sumOfNumbers(nums);
+		const sum = sumOfNumbers(numbers);
 		if (isPrime(sum)) {
 			res.status(200).json({ result: sum, isPrime: true });
 		} else {

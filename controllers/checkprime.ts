@@ -5,17 +5,17 @@ import HttpError from '../utils/httpError';
 import { validateNumber } from '../utils/middleware/numberValidation';
 
 const checkprime = (req: Request, res: Response, next: NextFunction) => {
-	const { query: { number } } = req;
+	const { query: { number: numberQuery } } = req;
 
 	try {
-		if (!number) {
+		if (!numberQuery) {
 			throw new HttpError('Check your input', 400);
 		}
-		const num = number as string;
-		if (!validateNumber(num)) {
+		const number = numberQuery as string;
+		if (!validateNumber(number)) {
 			throw new HttpError('Check your input', 400);
 		}
-		if (isPrime(+num)) {
+		if (isPrime(+number)) {
 			res.status(200).json({ isPrime: true });
 		} else {
 			res.status(200).json({ isPrime: false });

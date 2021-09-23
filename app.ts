@@ -12,10 +12,10 @@ app.use(cors({
 	methods: [ 'GET' ]
 }));
 
-app.use('/sum', sumRouter);
-app.use('/checkprime', checkprimeRouter);
+app.use('/api/sum', sumRouter);
+app.use('/api/checkprime', checkprimeRouter);
 
-app.use(middleware.unknownEndPoint);
+app.use(middleware.unknownEndpoint);
 
 app.use(middleware.errorHandler);
 

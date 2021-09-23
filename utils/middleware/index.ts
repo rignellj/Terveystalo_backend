@@ -1,7 +1,7 @@
 import { RequestHandler, ErrorRequestHandler } from 'express';
 
-const unknownEndPoint: RequestHandler = (_req, res) => {
-	res.status(404);
+const unknownEndpoint: RequestHandler = (_req, res) => {
+	res.status(404).json({ message: 'Unknown endpoint' });
 };
 
 const errorHandler: ErrorRequestHandler = (err, _req, res, next): void | Response => {
@@ -17,6 +17,6 @@ const errorHandler: ErrorRequestHandler = (err, _req, res, next): void | Respons
 };
 
 export default {
-	unknownEndPoint,
+	unknownEndpoint,
 	errorHandler
 }
