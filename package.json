@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "rmBuild": "rm -rf build",
+    "tsc": "tsc",
+    "start": "node build/index.js",
+    "build": "npm run tsc",
     "front": "cd ../prime-numbers-frontend && npm start",
     "back": "cross-env NODE_ENV=development nodemon index.ts",
     "dev": "concurrently -n 'client,server' -c 'red,magenta'  \"npm run front\" \"npm run back\"",
