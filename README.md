@@ -6,7 +6,8 @@ Repository consists backend code of the code challenge that was assigned to me
 * [Technologies](#technologies)
 * [Endpoints](#endpoints)
 * [Input Validation](#input-validation)
-* [Error Handling](*error-handling)
+* [Error Handling](#error-handling)
+* [Test Cases](#test-cases)
 
 ## Available Scripts
 
@@ -82,7 +83,7 @@ Basically `/api/sum` accepts only digits [0-9] and commas and `/api/checkprime` 
 - If `validateNumbers` or `validateNumber` functions detect error in the input then `400 status code` is sent.
 - Also descriptive error message is sent as response.
 
-## Tests Cases
+## Test Cases
 
 ### Tests for `/api/sum` when result is prime number
 | Request | OK |
@@ -116,7 +117,7 @@ get(/api/sum/?numbers=abc,def+0) | 👍 |
 get(/api/sum/?numbers=0+0+1) | 👍 |
 get(/api/sum/?numbers=0,1 ,1) | 👍 |
 
-### Tests for `/api/checkprime`
+### Tests for `/api/checkprime`  when number is prime number
 | Request | OK |
 --- | --- |
 get(/api/checkprime/?number=2) | 👍 |
@@ -126,7 +127,7 @@ get(/api/checkprime/?number=8191) | 👍 |
 get(/api/checkprime/?number=6700417) | 👍 |
 
 
-### Tests for `/api/checkprime` when result is not prime number
+### Tests for `/api/checkprime` when number is not prime number
 | Request | OK |
 --- | --- |
 get(/api/checkprime/?number=1) | 👍 |
