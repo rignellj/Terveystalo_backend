@@ -82,5 +82,68 @@ Basically `/api/sum` accepts only digits [0-9] and commas and `/api/checkprime` 
 - If `validateNumbers` or `validateNumber` functions detect error in the input then `400 status code` is sent.
 - Also descriptive error message is sent as response.
 
+## Tests Cases
+
+### Tests for `/api/sum` when result is prime number
+| Request | OK |
+--- | --- |
+get(/api/sum/?numbers=1,2) | 👍 |
+get(/api/sum/?numbers=1,1) | 👍 |
+get(/api/sum/?numbers=9,1,3) | 👍 |
+get(/api/sum/?numbers=8000,100,90,1) | 👍 |
+get(/api/sum/?numbers=6700416,1) | 👍 |
+
+### Tests for `/api/sum` when result is not prime number
+| Request | OK |
+--- | --- |
+get(/api/sum/?numbers=1) | 👍 |
+get(/api/sum/?numbers=0,0) | 👍 |
+get(/api/sum/?numbers=1,1,1,1) | 👍 |
+get(/api/sum/?numbers=1,0,3,2) | 👍 |
+
+### Tests for `/api/sum` when user input is malformed
+| Request | OK |
+--- | --- |
+get(/api/sum/?numbers=,,8,55,,,10558,,,0,,) | 👍 |
+get(/api/sum/?numbers=,) | 👍 |
+
+### Tests for `/api/sum` when user input is invalid
+| Request | OK |
+--- | --- |
+get(/api/sum/?numbers='') | 👍 |
+get(/api/sum/) | 👍 |
+get(/api/sum/?numbers=abc,def+0) | 👍 |
+get(/api/sum/?numbers=0+0+1) | 👍 |
+get(/api/sum/?numbers=0,1 ,1) | 👍 |
+
+### Tests for `/api/checkprime`
+| Request | OK |
+--- | --- |
+get(/api/checkprime/?number=2) | 👍 |
+get(/api/checkprime/?number=5) | 👍 |
+get(/api/checkprime/?number=13) | 👍 |
+get(/api/checkprime/?number=8191) | 👍 |
+get(/api/checkprime/?number=6700417) | 👍 |
 
 
+### Tests for `/api/checkprime` when result is not prime number
+| Request | OK |
+--- | --- |
+get(/api/checkprime/?number=1) | 👍 |
+get(/api/checkprime/?number=0) | 👍 |
+get(/api/checkprime/?number=4) | 👍 |
+get(/api/checkprime/?number=6) | 👍 |
+
+### Tests for `/api/checkprime` when user input is invalid
+| Request | OK |
+--- | --- |
+get(/api/checkprime/?number='') | 👍 |
+get(/api/checkprime/) | 👍 |
+get(/api/checkprime/?number=abc,def+0) | 👍 |
+get(/api/checkprime/?number=0+0+1) | 👍 |
+get(/api/checkprime/?number=0,1,1) | 👍 |
+
+### Tests for `unknown endpoint`
+| Request | OK |
+--- | --- |
+get(/unknownEndpoint) | 👍 |
